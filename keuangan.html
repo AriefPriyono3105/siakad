@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIAP UPS Tegal - Data Keuangan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-section">
+            <a href="index.html" style="text-decoration: none; display: flex; flex-direction: column;">
+                <span class="logo-title">SIAP</span>
+                <span class="logo-subtitle">UNIVERSITAS PANCASAKTI TEGAL</span>
+            </a>
+        </div>
+        
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Akademik</a>
+                    <div class="dropdown-content"><a href="#">Jadwal Kuliah</a><a href="#">Isi Krs</a></div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Ujian</a>
+                    <div class="dropdown-content"><a href="#">Jadwal Ujian</a></div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Report</a>
+                    <div class="dropdown-content"><a href="#">Nilai</a><a href="#">Report KRS</a><a href="#">Report KHS</a><a href="#">Report DKN</a></div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Data Anda</a>
+                    <div class="dropdown-content">
+                        <a href="#">Profil</a>
+                        <a href="keuangan.html">Keuangan</a> 
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="user-info">
+            <a href="#" class="logout-btn">Logout</a>
+            <span class="user-name">ARIEF PRIYONO</span>
+        </div>
+    </header>
+
+    <main class="content-container">
+        <div class="page-title-section">
+            <h2>Data Keuangan</h2>
+            <p>Halaman untuk transaksi keuangan</p>
+        </div>
+        <div class="table-responsive">
+            <table class="keuangan-table">
+                <thead>
+                    <tr><th>Periode</th><th>Nama Tagihan</th><th>Nominal Tagihan</th><th>Tanggal Bayar</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>2025/2026 - GENAP</td><td>TAGIHAN_THP_1_(REGISTRASI)</td><td>Rp. 4,800,000</td><td>2026-03-20 01:39:02.000</td><td>LUNAS</td></tr>
+                    <tr><td>2025/2026 - GANJIL</td><td>TAGIHAN_THP_1_(REGISTRASI)</td><td>Rp. 4,800,000</td><td>2025-08-29 01:39:02.000</td><td>LUNAS</td></tr>
+                    <tr><td>2024/2025 - GENAP</td><td>TAGIHAN_THP_1_(REGISTRASI)</td><td>Rp. 4,800,000</td><td>2025-02-28 11:16:13.000</td><td>LUNAS</td></tr>
+                    <tr><td>2024/2025 - GANJIL</td><td>TAGIHAN_THP_1_(REGISTRASI)</td><td>Rp. 4,800,000</td><td>2024-08-30 01:37:48.000</td><td>LUNAS</td></tr>
+                    <tr><td>2023/2024 - GENAP</td><td>TAGIHAN_PEMBANGUNAN</td><td>Rp. 2,750,000</td><td>2024-06-27 09:39:04.000</td><td>LUNAS</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script>
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                // Perbaikan JS: biarkan link (a href) bekerja jika diklik
+                if(e.target.tagName !== 'A' || e.target.classList.contains('dropbtn')){
+                    e.preventDefault();
+                    dropdowns.forEach(d => { if (d !== dropdown) d.classList.remove('active'); });
+                    this.classList.toggle('active');
+                }
+            });
+        });
+        window.addEventListener('click', function(e) {
+            if (!e.target.matches('.dropbtn') && !e.target.matches('.dropdown-content') && !e.target.closest('.dropdown-content')) {
+                dropdowns.forEach(dropdown => { dropdown.classList.remove('active'); });
+            }
+        });
+    </script>
+</body>
+</html>

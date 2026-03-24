@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIAP UPS Tegal - Report DKN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-section">
+            <a href="index.html" style="text-decoration: none; display: flex; flex-direction: column;">
+                <span class="logo-title">SIAP</span>
+                <span class="logo-subtitle">UNIVERSITAS PANCASAKTI TEGAL</span>
+            </a>
+        </div>
+        
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li class="dropdown"><a href="#" class="dropbtn">Akademik</a><div class="dropdown-content"><a href="#">Jadwal Kuliah</a><a href="#">Isi Krs</a></div></li>
+                <li class="dropdown"><a href="#" class="dropbtn">Ujian</a><div class="dropdown-content"><a href="#">Jadwal Ujian</a></div></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Report</a>
+                    <div class="dropdown-content"><a href="nilai.html">Nilai</a><a href="dkn.html">Report DKN</a></div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Data Anda</a>
+                    <div class="dropdown-content"><a href="#">Profil</a><a href="keuangan.html">Keuangan</a></div>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="user-info">
+            <a href="#" class="logout-btn">Logout</a>
+            <span class="user-name">ARIEF PRIYONO</span>
+        </div>
+    </header>
+
+    <main class="content-container">
+        <div class="page-title-section">
+            <h2>Daftar Kumpulan Nilai (DKN)</h2>
+            <p>Halaman untuk mengunduh dokumen resmi DKN</p>
+        </div>
+        
+        <div class="download-area">
+            <div class="document-icon">📄</div>
+            <h3>Dokumen DKN Arief Priyono</h3>
+            <p>NIM: 6623600080 | Fakultas: Teknik | Prodi: Informatika</p>
+            
+            <a href="dknmhs_6623600080.pdf" download class="btn-download">
+                📥 Download PDF DKN
+            </a>
+        </div>
+    </main>
+
+    <script>
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                if(e.target.tagName !== 'A' || e.target.classList.contains('dropbtn')){
+                    e.preventDefault();
+                    dropdowns.forEach(d => { if (d !== dropdown) d.classList.remove('active'); });
+                    this.classList.toggle('active');
+                }
+            });
+        });
+        window.addEventListener('click', function(e) {
+            if (!e.target.matches('.dropbtn') && !e.target.matches('.dropdown-content') && !e.target.closest('.dropdown-content')) {
+                dropdowns.forEach(dropdown => { dropdown.classList.remove('active'); });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replika SIAP UPS Tegal - Belajar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo-section">
+            <span class="logo-title">SIAP</span>
+            <span class="logo-subtitle">UNIVERSITAS PANCASAKTI TEGAL</span>
+        </div>
+        
+        <nav class="navbar">
+            <ul class="nav-links">
+                
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Akademik</a>
+                    <div class="dropdown-content">
+                        <a href="#">Jadwal Kuliah</a>
+                        <a href="#">Isi Krs</a>
+                    </div>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Ujian</a>
+                    <div class="dropdown-content">
+                        <a href="#">Jadwal Ujian</a>
+                    </div>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Report</a>
+                    <div class="dropdown-content">
+                        <a href="#">Nilai</a>
+                        <a href="#">Report KRS Mahasiswa</a>
+                        <a href="#">Report KHS Mahasiswa</a>
+                        <a href="#">Report DKN Mahasiswa</a>
+                    </div>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Data Anda</a>
+                    <div class="dropdown-content">
+                        <a href="#">Profil</a>
+                        <a href="#">Keuangan</a>
+                    </div>
+                </li>
+                
+            </ul>
+        </nav>
+
+        <div class="user-info">
+            <a href="#" class="logout-btn">Logout</a>
+            <span class="user-name">ARIEF PRIYONO</span>
+        </div>
+    </header>
+
+    <main class="content-container">
+        <div class="alert-banner">
+            <div class="alert-icon">
+                <i class="fas fa-ban"></i> </div>
+            <div class="alert-text">
+                <h3>Peringatan!</h3>
+                <p>Anda masih memiliki **TAGIHAN AKADEMIK**. Bagi mahasiswa yang masih memiliki tunggaan **KEUANGAN**, maka tidak bisa melakukan **INPUT KRS SEMESTER AKTIF**.</p>
+            </div>
+            <button class="alert-btn">lihat detail</button>
+        </div>
+        
+        <div class="main-content-area">
+            </div>
+    </main>
+
+    <script>
+        // Mengambil semua tombol dropdown
+        const dropdowns = document.querySelectorAll('.dropdown');
+
+        // Menambahkan event klik ke setiap dropdown
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                // Mencegah link utama terbuka
+                e.preventDefault();
+                
+                // Menutup semua dropdown lain yang mungkin sedang terbuka
+                dropdowns.forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove('active');
+                    }
+                });
+                
+                // Membuka/menutup dropdown yang diklik
+                this.classList.toggle('active');
+            });
+        });
+
+        // Menutup menu jika user mengklik di luar menu
+        window.addEventListener('click', function(e) {
+            if (!e.target.matches('.dropbtn') && !e.target.matches('.dropdown-content') && !e.target.closest('.dropdown-content')) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

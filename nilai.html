@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIAP UPS Tegal - Report Nilai Akademik</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-section">
+            <a href="index.html" style="text-decoration: none; display: flex; flex-direction: column;">
+                <span class="logo-title">SIAP</span>
+                <span class="logo-subtitle">UNIVERSITAS PANCASAKTI TEGAL</span>
+            </a>
+        </div>
+        
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li class="dropdown"><a href="#" class="dropbtn">Akademik</a><div class="dropdown-content"><a href="#">Jadwal Kuliah</a><a href="#">Isi Krs</a></div></li>
+                <li class="dropdown"><a href="#" class="dropbtn">Ujian</a><div class="dropdown-content"><a href="#">Jadwal Ujian</a></div></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Report</a>
+                    <div class="dropdown-content"><a href="nilai.html">Nilai</a><a href="dkn.html">Report DKN</a></div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Data Anda</a>
+                    <div class="dropdown-content"><a href="#">Profil</a><a href="keuangan.html">Keuangan</a></div>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="user-info">
+            <a href="#" class="logout-btn">Logout</a>
+            <span class="user-name">ARIEF PRIYONO</span>
+        </div>
+    </header>
+
+    <main class="content-container">
+        <div class="page-title-section">
+            <h2>Report Nilai Akademik</h2>
+            <p>Halaman report nilai akademik</p>
+        </div>
+
+        <div class="filter-section">
+            <label for="tahunAjaran">Th. Ak.:</label>
+            <select id="tahunAjaran" onchange="filterNilai()">
+                <option value="2025-genap">2025/2026 - genap</option>
+                <option value="2025-ganjil" selected>2025/2026 - ganjil</option>
+                <option value="2024-genap">2024/2025 - genap</option>
+                <option value="2024-ganjil">2024/2025 - ganjil</option>
+                <option value="2023-genap">2023/2024 - genap</option>
+                <option value="2023-ganjil">2023/2024 - ganjil</option>
+            </select>
+        </div>
+        
+        <div class="table-responsive">
+            <table class="nilai-table">
+                <thead>
+                    <tr>
+                        <th>NIM</th>
+                        <th>MK</th>
+                        <th>NILAI AKHIR</th>
+                        <th>NILAI HURUF</th>
+                        <th>BOBOT</th>
+                    </tr>
+                </thead>
+
+                <tbody id="2025-genap" class="nilai-body" style="display: none;">
+                    <tr><td>6623600080</td><td>KODE DUMMY GENAP 25</td><td>80.00</td><td>A-</td><td>3.70</td></tr>
+                    </tbody>
+
+                <tbody id="2025-ganjil" class="nilai-body">
+                    <tr><td>6623600080</td><td>DATA MINING</td><td>90.50</td><td>A</td><td>4.00</td></tr>
+                    <tr><td>6623600080</td><td>GRAFIKA KOMPUTER</td><td>87.14</td><td>A</td><td>4.00</td></tr>
+                    <tr><td>6623600080</td><td>INTERAKSI MANUSIA DAN KOMPUTER</td><td>85.40</td><td>A-</td><td>3.70</td></tr>
+                    <tr><td>6623600080</td><td>IOT (INTERNET OF THING)</td><td>94.00</td><td>A</td><td>4.00</td></tr>
+                    </tbody>
+
+                <tbody id="2024-genap" class="nilai-body" style="display: none;">
+                    <tr><td>6623600080</td><td>KODE DUMMY GENAP 24</td><td>85.00</td><td>A-</td><td>3.70</td></tr>
+                    </tbody>
+
+                <tbody id="2024-ganjil" class="nilai-body" style="display: none;">
+                    <tr><td>6623600080</td><td>KODE DUMMY GANJIL 24</td><td>88.00</td><td>A</td><td>4.00</td></tr>
+                    </tbody>
+
+                <tbody id="2023-genap" class="nilai-body" style="display: none;">
+                    <tr><td>6623600080</td><td>KODE DUMMY GENAP 23</td><td>92.00</td><td>A</td><td>4.00</td></tr>
+                    </tbody>
+
+                <tbody id="2023-ganjil" class="nilai-body" style="display: none;">
+                    <tr><td>6623600080</td><td>KODE DUMMY GANJIL 23</td><td>78.00</td><td>B+</td><td>3.30</td></tr>
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script>
+        // SCRIPT UNTUK FILTER TABEL
+        function filterNilai() {
+            // Ambil nilai yang dipilih di dropdown
+            const pilihan = document.getElementById('tahunAjaran').value;
+            // Ambil semua kelompok tabel (tbody)
+            const semuaTabel = document.querySelectorAll('.nilai-body');
+            
+            semuaTabel.forEach(tabel => {
+                // Jika ID tabel sama dengan pilihan, tampilkan. Jika tidak, sembunyikan.
+                if (tabel.id === pilihan) {
+                    tabel.style.display = 'table-row-group';
+                } else {
+                    tabel.style.display = 'none';
+                }
+            });
+        }
+
+        // SCRIPT MENU DROPDOWN (Sama seperti sebelumnya)
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                if(e.target.tagName !== 'A' || e.target.classList.contains('dropbtn')){
+                    e.preventDefault();
+                    dropdowns.forEach(d => { if (d !== dropdown) d.classList.remove('active'); });
+                    this.classList.toggle('active');
+                }
+            });
+        });
+        window.addEventListener('click', function(e) {
+            if (!e.target.matches('.dropbtn') && !e.target.matches('.dropdown-content') && !e.target.closest('.dropdown-content')) {
+                dropdowns.forEach(dropdown => { dropdown.classList.remove('active'); });
+            }
+        });
+    </script>
+</body>
+</html>
